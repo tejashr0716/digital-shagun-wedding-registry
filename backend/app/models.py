@@ -1,11 +1,14 @@
 import uuid
-from datetime import datetime, date
+from datetime import datetime, timezone, date
 from sqlalchemy import (
     Column, String, Text, Numeric, Boolean, Date, DateTime, ForeignKey, JSON
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from app.database import Base
+
+def utc_now():
+    return datetime.now(timezone.utc)
 
 class User(Base):
     __tablename__ = "users"
@@ -15,7 +18,7 @@ class User(Base):
     email = Column(String(255), nullable=True)
     role = Column(String(30), default="COUPLE_ADMIN", nullable=False)
     password_hash = Column(String(255), nullable=True)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), default=utc_now)
 
     weddings = relationship("Wedding", back_populates="couple", cascade="all, delete-orphan")
 
@@ -33,7 +36,7 @@ class Wedding(Base):
     story = Column(Text, nullable=True)
     cover_image_url = Column(Text, nullable=True)
     payout_bank_account = Column(JSON, nullable=True)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), default=utc_now)
 
     couple = relationship("User", back_populates="weddings")
     goals = relationship("RegistryGoal", back_populates="wedding", cascade="all, delete-orphan")
@@ -52,7 +55,7 @@ class RegistryGoal(Base):
     cover_image_url = Column(Text, nullable=True)
     show_target_amount = Column(Boolean, default=True, nullable=False)
     is_active = Column(Boolean, default=True, nullable=False)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), default=utc_now)
 
     wedding = relationship("Wedding", back_populates="goals")
     gifts = relationship("Gift", back_populates="goal")
@@ -73,7 +76,7 @@ class Gift(Base):
     razorpay_order_id = Column(String(100), nullable=True)
     razorpay_payment_id = Column(String(100), unique=True, nullable=True)
     payment_status = Column(String(20), default="PENDING", nullable=False)  # 'PENDING', 'SUCCESS', 'FAILED'
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    created_at = Column(DateTime(timezone=True), default=utc_now)
 
     wedding = relationship("Wedding", back_populates="gifts")
     goal = relationship("RegistryGoal", back_populates="gifts")
@@ -86,4 +89,4 @@ class WebhookEvent(Base):
     event_id = Column(String(100), unique=True, nullable=False, index=True)
     event_type = Column(String(50), nullable=False)
     payload = Column(JSON, nullable=False)
-    processed_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    processed_at = Column(DateTime(timezone=True), default=utc_now)

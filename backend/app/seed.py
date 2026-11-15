@@ -1,6 +1,12 @@
+import sys
+from pathlib import Path
+
+# Ensure backend root is on sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import asyncio
 import uuid
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timezone, timedelta
 from sqlalchemy import select, delete
 from app.database import AsyncSessionLocal
 from app.models import User, Wedding, RegistryGoal, Gift, WebhookEvent
@@ -138,7 +144,7 @@ async def run_seed():
                 razorpay_order_id=f"order_demo_{1000 + idx}",
                 razorpay_payment_id=f"pay_demo_{2000 + idx}",
                 payment_status="SUCCESS",
-                created_at=datetime.utcnow() - timedelta(hours=(10 - idx) * 3)
+                created_at=datetime.now(timezone.utc) - timedelta(hours=(10 - idx) * 3)
             )
             session.add(gift)
 
