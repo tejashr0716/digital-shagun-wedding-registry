@@ -1,19 +1,38 @@
 @import "tailwindcss";
 
-:root {
-  --background: #faf8f6;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-canvas: #faf9f6;
+    --surface-white: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #595959;
+    --text-muted: #8c8c8c;
+    --border-subtle: #eceae5;
+    --border-card: #e5e2da;
+    --brand-teal: #284b43;
+    --brand-teal-light: #eef4f2;
+    --brand-terracotta: #c86d51;
+    --brand-gold: #c5a059;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: -0.01em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+.shadow-zola {
+  box-shadow: 0 4px 24px -2px rgba(26, 26, 26, 0.05), 0 2px 8px -2px rgba(26, 26, 26, 0.03);
+}
+
+.shadow-zola-hover {
+  box-shadow: 0 12px 36px -4px rgba(26, 26, 26, 0.08), 0 4px 12px -2px rgba(26, 26, 26, 0.04);
 }

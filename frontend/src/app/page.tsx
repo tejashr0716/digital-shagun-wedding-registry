@@ -1,230 +1,325 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
-  Heart, Gift, MonitorPlay, ArrowRight,
-  Sparkles, CheckCircle2
+  Heart, Gift, MonitorPlay,
+  ShieldCheck, Search, ChevronRight
 } from "lucide-react";
 
 export default function HomePage() {
-  const windows = [
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Directs to demo or searched slug
+      router.push("/w/priya-and-rohit");
+    }
+  };
+
+  const fundCategories = [
     {
-      num: "01",
-      title: "Authentication & Onboarding",
-      desc: "Instant SMS/WhatsApp OTP login and role-based session handling for couples.",
-      link: "/auth",
+      title: "Honeymoon & Escapes",
+      tag: "Most Popular",
+      desc: "Flights, beachside villas, sunset dinners, and adventures across the world.",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     },
     {
-      num: "02",
-      title: "Couple Profile & Event Setup",
-      desc: "Bride & Groom backstory, event date, venue, and automated vanity URL generator.",
-      link: "/setup",
+      title: "First Home Down Payment",
+      tag: "Life Milestone",
+      desc: "Lay the foundation for your future home together with group shagun funding.",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
     },
     {
-      num: "03",
-      title: "Goal & Fund Builder",
-      desc: "Milestone crowdfunding: Honeymoon, Home Down Payment, Appliances, and Custom funds.",
-      link: "/dashboard/goals",
-    },
-    {
-      num: "04",
-      title: "Payout & Bank KYC",
-      desc: "Secure automated direct bank settlements via Razorpay Route Linked Accounts.",
-      link: "/dashboard/payout",
-    },
-    {
-      num: "05",
-      title: "Invitation QR & Digital Share Kit",
-      desc: "High-resolution vector QR code for invitation cards and 1-click WhatsApp invites.",
-      link: "/dashboard/qr-kit",
-    },
-    {
-      num: "06",
-      title: "Public Guest Experience",
-      desc: "Mobile-first wedding page with countdown timer, couple story, and progress bars.",
-      link: "/w/priya-and-rohit",
-    },
-    {
-      num: "07",
-      title: "Guest Checkout & Gifting Modal",
-      desc: "Fast UPI / Card gifting (₹1,001, ₹2,100, etc.), confetti celebration, and digital receipt.",
-      link: "/w/priya-and-rohit",
-    },
-    {
-      num: "08",
-      title: "Venue Big-Screen Kiosk Mode",
-      desc: "Real-time projector stream celebrating guest blessings live at the wedding reception.",
-      link: "/w/priya-and-rohit/live",
-    },
-    {
-      num: "09",
-      title: "Couple Organizer Dashboard",
-      desc: "Financial analytics (Gross, 1.5% Platform Fee, Net) and itemized guest blessing ledger.",
-      link: "/dashboard",
-    },
-    {
-      num: "10",
-      title: "Post-Wedding Thank-You Dispatch",
-      desc: "Excel/CSV guest export and personalized 1-click WhatsApp thank-you generator.",
-      link: "/dashboard/thank-you",
+      title: "Living & Smart Appliances",
+      tag: "Home Wishlist",
+      desc: "Modern espresso machines, robotic vacuums, cookware, and cozy interiors.",
+      image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#faf8f6] text-gray-900 selection:bg-rose-500 selection:text-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-8">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100 text-rose-700 text-xs font-bold uppercase tracking-wider shadow-2xs border border-rose-200">
-          <Sparkles className="w-3.5 h-3.5" /> Modernizing Traditional Shagun via UPI &amp; Cards
+    <div className="min-h-screen bg-[#FAF9F6] text-[#1A1A1A] selection:bg-[#1A1A1A] selection:text-white">
+      {/* Editorial Zola Hero Section */}
+      <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto text-center space-y-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EEF4F2] text-[#284B43] text-xs font-mono tracking-widest uppercase font-semibold">
+          <ShieldCheck className="w-4 h-4" /> The 0% Cash Fund Fee Guarantee
         </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-gray-900 max-w-4xl mx-auto leading-[1.15]">
-          Goal-Based Wedding Registries &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500">Cash Crowdfunding</span>
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-[#1A1A1A] max-w-4xl mx-auto leading-[1.12]">
+          The wedding registry that does it all.
         </h1>
 
-        <p className="text-base sm:text-xl text-gray-600 max-w-2xl mx-auto font-sans leading-relaxed">
-          Couples build life milestones (Honeymoon, First Home Down Payment, Eco-Smart Appliances). Guests scan a dynamic QR code on invitations or venue tables, write heartfelt blessings, and gift frictionlessly.
+        <p className="text-base sm:text-lg text-[#595959] max-w-2xl mx-auto font-sans leading-relaxed">
+          Create cash funds for honeymoons, your first home down payment, and traditional shagun. Free for couples, effortless for guests via UPI and Cards.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 pt-4">
+        {/* Search Bar - Find a Couple's Registry */}
+        <div className="pt-2 max-w-xl mx-auto">
+          <form
+            onSubmit={handleSearch}
+            className="flex items-center bg-white p-2 rounded-full border border-[#D1CFCA] shadow-zola hover:border-[#1A1A1A] transition-all"
+          >
+            <Search className="w-5 h-5 text-[#757575] ml-3 shrink-0" />
+            <input
+              type="text"
+              placeholder="Find a couple's registry (e.g. Priya & Rohit)"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-3 py-2 text-sm text-[#1A1A1A] focus:outline-hidden bg-transparent font-sans"
+            />
+            <button
+              type="submit"
+              className="px-6 py-2.5 rounded-full bg-[#1A1A1A] hover:bg-black text-white text-xs font-semibold uppercase tracking-wider shrink-0 transition-colors"
+            >
+              Search
+            </button>
+          </form>
+
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#757575]">
+            <span>Quick demo:</span>
+            <Link
+              href="/w/priya-and-rohit"
+              className="text-[#1A1A1A] font-semibold underline decoration-stone-300 hover:decoration-black underline-offset-4"
+            >
+              Priya &amp; Rohit&apos;s Registry →
+            </Link>
+          </div>
+        </div>
+
+        {/* Primary Action Buttons */}
+        <div className="pt-4 flex flex-wrap justify-center items-center gap-4">
           <Link
             href="/w/priya-and-rohit"
-            className="px-8 py-4 rounded-full bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-700 hover:to-rose-800 text-white font-bold text-sm shadow-xl shadow-rose-200 transition-all flex items-center gap-2 hover:scale-105"
+            className="px-8 py-3.5 rounded-full bg-[#1A1A1A] hover:bg-black text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all"
           >
-            <Gift className="w-4 h-4" />
-            Explore Live Demo Registry (Priya &amp; Rohit)
+            Explore Live Registry Demo
+          </Link>
+
+          <Link
+            href="/setup"
+            className="px-8 py-3.5 rounded-full bg-white hover:bg-stone-50 text-[#1A1A1A] text-xs font-bold uppercase tracking-wider border border-[#D1CFCA] shadow-2xs transition-all"
+          >
+            Create Your Registry
+          </Link>
+        </div>
+      </section>
+
+      {/* Zola 0% Cash Fund Guarantee Banner */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="bg-[#EEF4F2] border border-[#D5E4E0] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
+          <div className="space-y-2 text-center md:text-left">
+            <span className="text-[10px] font-mono tracking-[0.2em] uppercase font-bold text-[#284B43]">
+              ZERO HIDDEN DEDUCTIONS
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
+              We make it free for couples to receive cash gifts.
+            </h2>
+            <p className="text-xs sm:text-sm text-[#36534E] max-w-2xl leading-relaxed">
+              Unlike traditional platforms that slice off 3% to 5% from cash funds, our 0% Cash Fund Fee Guarantee ensures guests can choose to cover the 2.0% gateway cost so couples receive 100% of every rupee gifted.
+            </p>
+          </div>
+
+          <div className="shrink-0">
+            <Link
+              href="/w/priya-and-rohit"
+              className="px-6 py-3 rounded-full bg-[#284B43] hover:bg-[#1f3a34] text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-colors block text-center"
+            >
+              See How It Works
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Lifestyle Milestone Cards Showcase */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+        <div className="text-center space-y-2 max-w-xl mx-auto">
+          <span className="text-[10px] font-mono tracking-[0.2em] uppercase font-bold text-[#757575]">
+            CURATED CASH FUNDS
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1A1A1A]">
+            One registry for all your milestones
+          </h2>
+          <p className="text-xs sm:text-sm text-[#757575]">
+            From bucket-list honeymoons to home down payments, give your guests meaningful ways to celebrate your future.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {fundCategories.map((cat, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl overflow-hidden border border-[#ECEAE5] shadow-zola hover:shadow-zola-hover transition-all group flex flex-col justify-between"
+            >
+              <div>
+                <div className="relative aspect-[4/3] w-full bg-[#F5F4F0] overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase font-bold text-[#1A1A1A]">
+                    {cat.tag}
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-2">
+                  <h3 className="text-xl font-serif font-bold text-[#1A1A1A]">
+                    {cat.title}
+                  </h3>
+                  <p className="text-xs text-[#595959] leading-relaxed">
+                    {cat.desc}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 pt-0">
+                <Link
+                  href="/w/priya-and-rohit"
+                  className="w-full py-2.5 rounded-full border border-[#D1CFCA] group-hover:border-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white text-xs font-semibold text-[#1A1A1A] transition-all flex items-center justify-center gap-1.5"
+                >
+                  View Sample Fund <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3 Simple Steps */}
+      <section className="bg-white border-y border-[#ECEAE5] py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center space-y-2 max-w-xl mx-auto">
+            <span className="text-[10px] font-mono tracking-[0.2em] uppercase font-bold text-[#757575]">
+              EFFORTLESS EXPERIENCE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1A1A1A]">
+              How Digital Shagun Works
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-[#284B43] tracking-widest uppercase">
+                Step 01
+              </span>
+              <h3 className="text-xl font-serif font-bold text-[#1A1A1A]">
+                Create Your Wishlist &amp; Funds
+              </h3>
+              <p className="text-xs text-[#595959] leading-relaxed font-sans">
+                Set up your milestone goals in minutes. Add descriptions, target amounts, and photos of what you&apos;re dreaming of.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-[#284B43] tracking-widest uppercase">
+                Step 02
+              </span>
+              <h3 className="text-xl font-serif font-bold text-[#1A1A1A]">
+                Share On Invitations &amp; Venue
+              </h3>
+              <p className="text-xs text-[#595959] leading-relaxed font-sans">
+                Include your custom wedding registry link and vector QR code on physical cards, WhatsApp invites, and venue table stands.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-[#284B43] tracking-widest uppercase">
+                Step 03
+              </span>
+              <h3 className="text-xl font-serif font-bold text-[#1A1A1A]">
+                Receive Blessings Direct to Bank
+              </h3>
+              <p className="text-xs text-[#595959] leading-relaxed font-sans">
+                Guests bless you with shagun via UPI or Cards with personal notes. Funds settle directly into your verified bank account.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* System Features Navigation Hub */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
+        <div className="text-center space-y-2 max-w-xl mx-auto">
+          <span className="text-[10px] font-mono tracking-[0.2em] uppercase font-bold text-[#757575]">
+            PLATFORM CAPABILITIES
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
+            Complete Wedding Ecosystem
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Link
+            href="/w/priya-and-rohit"
+            className="p-5 rounded-xl bg-white border border-[#ECEAE5] hover:border-[#1A1A1A] transition-all shadow-2xs hover:shadow-xs space-y-2 group"
+          >
+            <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
+              <Gift className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-serif font-bold text-[#1A1A1A]">Guest Registry Page</h4>
+            <p className="text-[11px] text-[#757575] leading-relaxed">
+              Mobile-first couple website with countdown, registry tabs, and story.
+            </p>
           </Link>
 
           <Link
             href="/w/priya-and-rohit/live"
-            className="px-8 py-4 rounded-full bg-amber-400 hover:bg-amber-500 text-gray-950 font-bold text-sm shadow-lg shadow-amber-200 transition-all flex items-center gap-2 hover:scale-105"
+            className="p-5 rounded-xl bg-white border border-[#ECEAE5] hover:border-[#1A1A1A] transition-all shadow-2xs hover:shadow-xs space-y-2 group"
           >
-            <MonitorPlay className="w-4 h-4" />
-            Launch Venue Big-Screen Kiosk
+            <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
+              <MonitorPlay className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-serif font-bold text-[#1A1A1A]">Venue Reception Kiosk</h4>
+            <p className="text-[11px] text-[#757575] leading-relaxed">
+              Real-time big-screen projector displaying guest blessings live.
+            </p>
           </Link>
 
           <Link
-            href="/auth"
-            className="px-8 py-4 rounded-full bg-white hover:bg-gray-50 text-gray-800 font-bold text-sm border border-gray-300 shadow-md transition-all flex items-center gap-2"
+            href="/dashboard"
+            className="p-5 rounded-xl bg-white border border-[#ECEAE5] hover:border-[#1A1A1A] transition-all shadow-2xs hover:shadow-xs space-y-2 group"
           >
-            Couple Sign In
-            <ArrowRight className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
+              <Heart className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-serif font-bold text-[#1A1A1A]">Couple Organizer Dashboard</h4>
+            <p className="text-[11px] text-[#757575] leading-relaxed">
+              Total funds raised, itemized guest blessing ledger, and analytics.
+            </p>
+          </Link>
+
+          <Link
+            href="/dashboard/payout"
+            className="p-5 rounded-xl bg-white border border-[#ECEAE5] hover:border-[#1A1A1A] transition-all shadow-2xs hover:shadow-xs space-y-2 group"
+          >
+            <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center text-[#1A1A1A] group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
+              <ShieldCheck className="w-4 h-4" />
+            </div>
+            <h4 className="text-sm font-serif font-bold text-[#1A1A1A]">Direct Bank Settlements</h4>
+            <p className="text-[11px] text-[#757575] leading-relaxed">
+              Bank KYC and automated settlement via Razorpay Linked Accounts.
+            </p>
           </Link>
         </div>
-
-        {/* Value Prop Badges */}
-        <div className="pt-8 flex flex-wrap justify-center items-center gap-6 text-xs text-gray-500 font-medium">
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Instant UPI, Cards &amp; NetBanking
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Direct Razorpay Bank Settlements
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Zero Clutter • 100% Milestone Focused
-          </span>
-        </div>
       </section>
 
-      {/* The 10-Window Architecture Grid */}
-      <section className="py-20 bg-white border-y border-rose-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center space-y-3 max-w-3xl mx-auto">
-            <span className="text-xs uppercase tracking-widest font-bold text-rose-500">
-              Complete End-to-End System
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-serif font-bold text-gray-900">
-              The 10-Window Platform Architecture
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500">
-              Engineered with clean separation between guest gifting, venue live streams, and couple financial reconciliation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-            {windows.map((win) => (
-              <Link
-                key={win.num}
-                href={win.link}
-                className="group p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:border-rose-300 hover:bg-rose-50/40 transition-all shadow-2xs hover:shadow-md flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <span className="font-mono text-2xl font-black text-rose-300 group-hover:text-rose-600 transition-colors">
-                    {win.num}
-                  </span>
-                  <h3 className="font-serif font-bold text-gray-900 text-base group-hover:text-rose-600 transition-colors">
-                    {win.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed font-sans">
-                    {win.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-2 border-t border-gray-200/60 flex items-center text-xs font-semibold text-rose-600 group-hover:translate-x-1 transition-transform">
-                  Open Window →
-                </div>
-              </Link>
-            ))}
-          </div>
+      {/* Editorial Footer */}
+      <footer className="bg-white border-t border-[#ECEAE5] py-12 text-center text-xs text-[#757575] space-y-3">
+        <div className="flex items-center justify-center gap-2 font-serif font-bold text-[#1A1A1A] text-base">
+          <span>ZOLA ♡♡</span>
+          <span className="text-xs text-[#8C8C8C] font-sans font-normal">| Digital Shagun &amp; Wedding Registries</span>
         </div>
-      </section>
-
-      {/* Monetization & Business Logic Breakdown */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <div className="text-center space-y-2 max-w-2xl mx-auto">
-          <span className="text-xs uppercase tracking-widest font-bold text-rose-500">
-            Monetization Architecture
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-gray-900">
-            Transparent Platform Revenue Model
-          </h2>
-          <p className="text-xs text-gray-500">
-            Designed for high transaction volumes with automated fee splitting before disbursement.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-xs space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold font-serif text-lg">
-              1.5%
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg">Platform Convenience Fee</h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Deducted automatically from cash payouts before bank disbursement via Razorpay Route. Covers registry hosting, live reception kiosks, and thank-you templates.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-xs space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold font-serif text-lg">
-              2.0%
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg">Gateway Fee Pass-Through</h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Guests can toggle &ldquo;Add 2% to cover transaction fee&rdquo; during gifting, ensuring 100% of their intended shagun reaches the couple&apos;s goal fund.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-xs space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold font-serif text-lg">
-              Affiliate
-            </div>
-            <h3 className="font-bold text-gray-900 text-lg">Vendor Partnership Slots</h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Curated honeymoon packages, luxury resort affiliate slots, and home interior discounts featured directly in Window 3 &amp; Window 10.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-12 text-center text-xs text-gray-500 space-y-2">
-        <div className="flex items-center justify-center gap-2 font-serif font-bold text-gray-800 text-sm">
-          <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
-          ShagunRegistry Platform
-        </div>
-        <p>Production-Grade 3-Tier Architecture • Next.js 14+ • FastAPI • PostgreSQL • Redis • Razorpay</p>
-        <p className="text-[11px] text-gray-400">© 2026 ShagunRegistry. All rights reserved.</p>
+        <p className="text-[11px] text-[#8C8C8C]">
+          The 0% Cash Fund Fee Guarantee • Instant UPI &amp; Cards • Direct Bank Settlements
+        </p>
+        <p className="text-[11px] text-[#8C8C8C]">
+          © 2026 Digital Shagun Wedding Registry. All rights reserved.
+        </p>
       </footer>
     </div>
   );
