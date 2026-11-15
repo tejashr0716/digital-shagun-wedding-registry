@@ -26,7 +26,9 @@ export default function PayoutKYCPage() {
           setIfscCode(wedding.payout_bank_account.ifsc_code || "");
           setUpiId(wedding.payout_bank_account.upi_id || "");
         }
-      } catch (err) {}
+      } catch {
+        // Fallback to default form values
+      }
     };
     fetchCurrent();
   }, []);

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import confetti from "canvas-confetti";
-import { X, Heart, ShieldCheck, Download, CheckCircle2, Sparkles, Smartphone } from "lucide-react";
+import { X, Heart, ShieldCheck, Download, CheckCircle2, Smartphone } from "lucide-react";
 import { api } from "@/lib/api";
 
 interface GoalOption {
@@ -12,7 +12,7 @@ interface GoalOption {
 
 interface GiftingModalProps {
   weddingId: string;
-  weddingSlug: string;
+  weddingSlug?: string;
   coupleTitle: string;
   goals: GoalOption[];
   selectedGoalId?: string;
@@ -22,7 +22,6 @@ interface GiftingModalProps {
 
 export default function GiftingModal({
   weddingId,
-  weddingSlug,
   coupleTitle,
   goals,
   selectedGoalId: initialGoalId,

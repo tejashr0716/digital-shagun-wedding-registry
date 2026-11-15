@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
-import { Heart, Calendar, MapPin, Gift, Clock, Sparkles, MessageCircle, ChevronRight, ShieldCheck } from "lucide-react";
+import React, { useState, useEffect, use, useCallback } from "react";
+import { Heart, Calendar, MapPin, Clock, Sparkles, MessageCircle, ChevronRight } from "lucide-react";
 import { api } from "@/lib/api";
 import ProgressBar from "@/components/ProgressBar";
 import GiftingModal from "@/components/GiftingModal";
@@ -24,7 +24,7 @@ export default function PublicWeddingPage({ params }: { params: Promise<{ slug: 
     seconds: 0,
   });
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const res = await api.getPublicWedding(slug);
       setData(res);
@@ -33,11 +33,11 @@ export default function PublicWeddingPage({ params }: { params: Promise<{ slug: 
     } finally {
       setLoading(false);
     }
-  };
+  }, [slug]);
 
   useEffect(() => {
     fetchData();
-  }, [slug]);
+  }, [fetchData]);
 
   // Countdown calculation
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function PublicWeddingPage({ params }: { params: Promise<{ slug: 
     );
   }
 
-  const { wedding, goals, recent_blessings, total_blessings_count, total_collected_gross } = data;
+  const { wedding, goals, recent_blessings, total_blessings_count } = data;
 
   return (
     <div className="min-h-screen bg-[#faf8f6] pb-24">

@@ -17,7 +17,9 @@ export default function QRKitPage() {
       try {
         const w = await api.getMyWedding();
         setWedding(w);
-      } catch (e) {}
+      } catch {
+        // Fallback to default demo wedding details
+      }
     };
     fetchWedding();
   }, []);

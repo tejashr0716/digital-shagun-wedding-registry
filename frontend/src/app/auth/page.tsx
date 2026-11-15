@@ -19,7 +19,7 @@ export default function AuthPage() {
     setError("");
     setLoading(true);
     try {
-      const res = await api.requestOTP(phoneNumber);
+      await api.requestOTP(phoneNumber);
       setStep("OTP");
       setInfo(`6-digit code dispatched to ${phoneNumber}. (Test Code: 123456)`);
       setOtpCode("123456");

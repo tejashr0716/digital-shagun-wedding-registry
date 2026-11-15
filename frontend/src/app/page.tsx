@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import {
-  Heart, Gift, QrCode, MonitorPlay, ShieldCheck, ArrowRight,
-  Sparkles, CheckCircle2, TrendingUp, Smartphone, Users, DollarSign,
-  Calendar, Layers, Check
+  Heart, Gift, MonitorPlay, ArrowRight,
+  Sparkles, CheckCircle2
 } from "lucide-react";
 
 export default function HomePage() {

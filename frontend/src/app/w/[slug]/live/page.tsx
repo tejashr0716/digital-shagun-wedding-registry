@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, use } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { Heart, Sparkles, Trophy, QrCode, Volume2, MonitorPlay } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 import { api } from "@/lib/api";
 
 export default function LiveReceptionKioskPage({
@@ -18,15 +18,17 @@ export default function LiveReceptionKioskPage({
   const [latestBlessing, setLatestBlessing] = useState<any>(null);
   const [tickerIndex, setTickerIndex] = useState(0);
 
-  const fetchLiveTicker = async () => {
+  const fetchLiveTicker = React.useCallback(async () => {
     try {
       const data = await api.getLiveTicker(slug);
       if (data?.blessings && data.blessings.length > 0) {
         setBlessings(data.blessings);
         setLatestBlessing(data.blessings[0]);
       }
-    } catch (e) {}
-  };
+    } catch {
+      // Ignore
+    }
+  }, [slug]);
 
   useEffect(() => {
     // Initial fetch of public wedding details
@@ -38,7 +40,7 @@ export default function LiveReceptionKioskPage({
     // Real-time polling loop every 4 seconds
     const interval = setInterval(fetchLiveTicker, 4000);
     return () => clearInterval(interval);
-  }, [slug]);
+  }, [slug, fetchLiveTicker]);
 
   // Rotate blessing carousel
   useEffect(() => {

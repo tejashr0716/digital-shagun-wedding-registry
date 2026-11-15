@@ -4,11 +4,10 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
-  LayoutDashboard, Heart, Wallet, Percent, QrCode, ArrowUpRight,
-  Download, Eye, Sparkles, Filter, CheckCircle2, AlertCircle, MessageSquare
+  Heart, Wallet, Percent, QrCode, ArrowUpRight,
+  Download, Eye, Sparkles, CheckCircle2, MessageSquare
 } from "lucide-react";
 import { api, getAuthToken } from "@/lib/api";
-import ProgressBar from "@/components/ProgressBar";
 
 export default function CoupleDashboardPage() {
   const router = useRouter();

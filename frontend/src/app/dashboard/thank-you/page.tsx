@@ -2,14 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, Download, MessageSquare, Share2, Heart, Sparkles, Check, ExternalLink } from "lucide-react";
+import { ArrowLeft, Download, MessageSquare, Check } from "lucide-react";
 import { api } from "@/lib/api";
 import VendorBanners from "@/components/VendorBanners";
 
 export default function ThankYouDispatchPage() {
   const [ledger, setLedger] = useState<any[]>([]);
   const [wedding, setWedding] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
   const [dispatched, setDispatched] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -21,8 +20,8 @@ export default function ThankYouDispatchPage() {
         ]);
         setWedding(w);
         setLedger(gifts);
-      } catch (e) {} finally {
-        setLoading(false);
+      } catch {
+        // Fallback
       }
     };
     loadData();

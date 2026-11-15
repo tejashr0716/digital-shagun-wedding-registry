@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Plus, Trash2, Edit3, Heart, Eye, EyeOff, Sparkles, Check, ArrowLeft } from "lucide-react";
+import { Plus, Trash2, Heart, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { api } from "@/lib/api";
 import ProgressBar from "@/components/ProgressBar";
 import VendorBanners from "@/components/VendorBanners";

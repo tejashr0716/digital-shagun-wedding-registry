@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Heart, Gift, QrCode, LayoutDashboard, MonitorPlay, LogIn, LogOut, Menu, X } from "lucide-react";
 import { getAuthToken, removeAuthToken } from "@/lib/api";
 
 export default function Navbar() {
+  const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,7 +18,7 @@ export default function Navbar() {
   const handleLogout = () => {
     removeAuthToken();
     setIsAuthenticated(false);
-    window.location.href = "/";
+    router.push("/");
   };
 
   return (

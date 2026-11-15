@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Heart, Calendar, MapPin, Sparkles, Image as ImageIcon, ArrowRight, Check } from "lucide-react";
+import { Heart, Calendar, MapPin, Image as ImageIcon, ArrowRight, Check } from "lucide-react";
 import { api, getAuthToken } from "@/lib/api";
 
 export default function SetupWeddingPage() {
