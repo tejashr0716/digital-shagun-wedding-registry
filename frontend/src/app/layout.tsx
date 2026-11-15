@@ -18,8 +18,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ZOLA • Modern Wedding Registry & Cash Funds",
-  description: "The modern wedding registry designed for real life. Register for experiential honeymoon cash funds, home down payment milestones, and thoughtful blessings.",
+  title: "Digital Wedding Gift • Modern Wedding Registry & Cash Funds",
+  description: "Digital Wedding Gift — The modern wedding registry designed for real life. Register for experiential honeymoon cash funds, home down payment milestones, and traditional shagun blessings.",
 };
 
 export default function RootLayout({

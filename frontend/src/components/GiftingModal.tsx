@@ -360,11 +360,11 @@ export default function GiftingModal({
                 )}
               </button>
 
-              {/* Zola Support Footer */}
+              {/* Digital Wedding Gift Support Footer */}
               <div className="text-center pt-1 text-[11px] text-stone-500 space-y-0.5">
-                <p>To order by phone, call <strong>1-408-657-ZOLA (9652)</strong></p>
+                <p>Digital Wedding Gift Support: <strong>1-800-WED-GIFT</strong></p>
                 <p className="flex items-center justify-center gap-1 text-[10px] text-[#284B43]">
-                  <ShieldCheck className="w-3 h-3" /> 0% Cash Fund Fee Guarantee • 256-bit bank encryption
+                  <ShieldCheck className="w-3.5 h-3.5" /> The 0% Cash Fund Fee Guarantee • 256-bit bank encryption
                 </p>
               </div>
             </form>

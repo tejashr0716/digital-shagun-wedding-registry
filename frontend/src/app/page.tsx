@@ -311,14 +311,14 @@ export default function HomePage() {
       {/* Editorial Footer */}
       <footer className="bg-white border-t border-[#ECEAE5] py-12 text-center text-xs text-[#757575] space-y-3">
         <div className="flex items-center justify-center gap-2 font-serif font-bold text-[#1A1A1A] text-base">
-          <span>ZOLA ♡♡</span>
-          <span className="text-xs text-[#8C8C8C] font-sans font-normal">| Digital Shagun &amp; Wedding Registries</span>
+          <span>Digital Wedding Gift ♡♡</span>
+          <span className="text-xs text-[#8C8C8C] font-sans font-normal">| Modern Wedding Registries &amp; Cash Crowdfunding</span>
         </div>
         <p className="text-[11px] text-[#8C8C8C]">
           The 0% Cash Fund Fee Guarantee • Instant UPI &amp; Cards • Direct Bank Settlements
         </p>
         <p className="text-[11px] text-[#8C8C8C]">
-          © 2026 Digital Shagun Wedding Registry. All rights reserved.
+          © 2026 Digital Wedding Gift. All rights reserved.
         </p>
       </footer>
     </div>

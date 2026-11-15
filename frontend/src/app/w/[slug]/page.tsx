@@ -83,7 +83,7 @@ export default function PublicWeddingPage({ params }: { params: Promise<{ slug: 
       <div className="min-h-[70vh] flex flex-col items-center justify-center space-y-4">
         <div className="w-8 h-8 border-2 border-[#1A1A1A] border-t-transparent rounded-full animate-spin" />
         <span className="font-serif text-sm tracking-widest uppercase text-[#757575]">
-          Loading Zola Wedding Registry...
+          Loading Digital Wedding Gift Registry...
         </span>
       </div>
     );
@@ -215,16 +215,16 @@ export default function PublicWeddingPage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
 
-      {/* 2. Zola Secondary Utility Bar */}
+      {/* 2. Secondary Utility Bar */}
       <div className="border-b border-[#ECEAE5] bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center text-xs text-[#595959]">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-bold text-lg text-[#1A1A1A] tracking-wider">ZOLA ♡</span>
+            <span className="font-serif font-bold text-base text-[#1A1A1A] tracking-wider">Digital Wedding Gift ♡</span>
           </div>
 
           <div className="flex items-center gap-5 sm:gap-8 font-sans">
-            <span className="hidden md:inline hover:underline cursor-pointer">About Zola</span>
-            <span className="hidden sm:inline hover:underline cursor-pointer">1-408-657-ZOLA</span>
+            <span className="hidden md:inline hover:underline cursor-pointer">About Registry</span>
+            <span className="hidden sm:inline hover:underline cursor-pointer">Support: 1-800-WED-GIFT</span>
             <span className="inline-flex items-center gap-1.5 font-semibold text-[#284B43]">
               <ShieldCheck className="w-4 h-4" /> The 0% Cash Fund Fee Guarantee
             </span>

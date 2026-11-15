@@ -35,11 +35,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-18">
           {/* Logo & Brand Identity */}
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-[0.08em] text-[#1A1A1A] group-hover:opacity-80 transition-opacity">
-                ZOLA
+            <Link href="/" className="flex items-center gap-2 group">
+              <span className="font-serif text-xl sm:text-2xl font-bold tracking-[0.04em] text-[#1A1A1A] group-hover:opacity-80 transition-opacity">
+                Digital Wedding Gift
               </span>
-              <span className="text-rose-500 font-serif text-xl tracking-tight">♡♡</span>
+              <span className="text-[#284B43] font-serif text-lg tracking-tight">♡♡</span>
             </Link>
 
             {/* Desktop Navigation Links */}
