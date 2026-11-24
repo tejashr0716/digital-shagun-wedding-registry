@@ -1,4 +1,4 @@
-# 💍 Digital Shagun & Wedding Gift Registry
+# 💍 Wedding Gift Crowdfunding # 💍 Digital Shagun & Wedding Gift Registry Registry Platform
 
 > **Modernizing traditional Indian wedding gifting (Shagun) with UPI milestone gifting, invitation QR cards, and live reception big-screen blessings.**
 
