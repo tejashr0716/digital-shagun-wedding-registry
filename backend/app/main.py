@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.services.redis_service import get_redis
-from app.routers import auth, weddings, goals, gifts, webhooks, analytics
+from app.routers import auth, weddings, goals, gifts, webhooks, analytics, ai_concierge
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -38,6 +38,7 @@ app.include_router(goals.router)
 app.include_router(gifts.router)
 app.include_router(webhooks.router)
 app.include_router(analytics.router)
+app.include_router(ai_concierge.router)
 
 @app.get("/health")
 async def health_check():
